@@ -1,0 +1,729 @@
+{
+  "common": {
+    "buttons": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "create": "Create",
+      "search": "Search",
+      "reset": "Reset",
+      "confirm": "Confirm",
+      "back": "Back",
+      "loading": "Loading...",
+      "reload": "Reload",
+      "continue": "Continue",
+      "download": "Download"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending"
+    },
+    "messages": {
+      "saveSuccess": "Saved successfully",
+      "deleteSuccess": "Deleted successfully",
+      "operationFailed": "Operation failed",
+      "confirmDelete": "Confirm delete",
+      "noData": "No data available",
+      "loadFailed": "Failed to load data, please retry",
+      "noRecords": "No matching records found"
+    },
+    "comingSoon": {
+      "title": "Coming Soon!",
+      "description": "This page has not been created yet.",
+      "stayTuned": "Stay tuned!"
+    },
+    "learnMore": "Learn more",
+    "dataTable": {
+      "columnOptions": "Column Options"
+    },
+    "selectOption": "Select Options"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "username": "Username",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password",
+      "submit": "Sign In",
+      "error": "Login failed, please check your username and password",
+      "welcome": "Welcome back, {{name}}!",
+      "defaultName": "User",
+      "noToken": "No access token received, please try again",
+      "networkError": "Network error, please try again later",
+      "usernamePlaceholder": "Username, email, or phone number",
+      "usernameRequired": "Please enter your username",
+      "passwordRequired": "Please enter your password",
+      "description": "Enter your username and password to sign in",
+      "footer": "By signing in, you agree to our Terms of Service and Privacy Policy",
+      "brandTagline": "Efficient & secure admin system"
+    },
+    "signUp": {
+      "title": "Create Account",
+      "description": "Enter your email and password to create an account.",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "footer": "By creating an account, you agree to our",
+      "terms": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Policy",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "emailRequired": "Please enter your email",
+      "password": "Password",
+      "passwordRequired": "Please enter your password",
+      "passwordMinLength": "Password must be at least 7 characters",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordMismatch": "Passwords do not match.",
+      "submit": "Create Account"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "description": "Enter your registered email and we'll send you a link to reset your password.",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign Up",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "emailRequired": "Please enter your email",
+      "submit": "Continue",
+      "sending": "Sending email...",
+      "sent": "Email sent to",
+      "error": "Error"
+    },
+    "otp": {
+      "title": "Two-Factor Authentication",
+      "description": "Enter the verification code. We've sent it to your email.",
+      "notReceived": "Didn't receive it?",
+      "resend": "Resend verification code",
+      "verificationCode": "One-time password",
+      "codeRequired": "Please enter a 6-digit verification code.",
+      "verify": "Verify"
+    }
+  },
+  "header": {
+    "search": "Search...",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "system": "System",
+    "settings": "Settings",
+    "help": "Help Center",
+    "adminPanel": "Admin Panel"
+  },
+  "configDrawer": {
+    "title": "Theme Settings",
+    "description": "Adjust appearance and layout to your preferences.",
+    "theme": "Theme",
+    "themeOptions": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "style": "Style",
+    "styleOptions": {
+      "inset": "Inset",
+      "floating": "Floating",
+      "sidebar": "Sidebar"
+    },
+    "layout": "Layout",
+    "layoutOptions": {
+      "default": "Default",
+      "compact": "Compact",
+      "fullscreen": "Fullscreen"
+    }
+  },
+  "iconPicker": {
+    "title": "Select Icon",
+    "searchPlaceholder": "Search icons...",
+    "selected": "Selected: {{value}}",
+    "noResults": "No matching icons found"
+  },
+  "system": {
+    "users": {
+      "title": "User List",
+      "description": "Manage your users and their roles here.",
+      "columns": {
+        "username": "Username",
+        "email": "Email",
+        "phone": "Phone Number",
+        "status": "Status",
+        "roles": "Roles",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "actions": {
+        "create": "Create User",
+        "edit": "Edit",
+        "delete": "Delete",
+        "invite": "Invite User",
+        "add": "Add User",
+        "resetPassword": "Reset Password",
+        "openMenu": "Open Menu"
+      },
+      "bulk": {
+        "inviteSelected": "Invite selected users",
+        "activateSelected": "Activate selected users",
+        "deactivateSelected": "Deactivate selected users",
+        "deleteSelected": "Delete selected users"
+      },
+      "form": {
+        "username": "Username",
+        "usernamePlaceholder": "Username",
+        "email": "Email",
+        "emailPlaceholder": "e.g.: john.doe@gmail.com",
+        "phone": "Phone Number",
+        "phonePlaceholder": "+86 13812345678",
+        "status": "Status",
+        "statusPlaceholder": "Select Status",
+        "password": "Password",
+        "passwordPlaceholder": "e.g.: S3cur3P@ssw0rd",
+        "confirmPassword": "Confirm Password",
+        "roles": "Roles",
+        "rolesPlaceholder": "Select Roles",
+        "statusActive": "Active",
+        "statusInactive": "Inactive",
+        "statusInvited": "Invited",
+        "statusSuspended": "Suspended"
+      },
+      "validation": {
+        "usernameRequired": "Username is required.",
+        "emailRequired": "Email is required.",
+        "statusRequired": "Status is required.",
+        "passwordRequired": "Password is required.",
+        "passwordMinLength": "Password must be at least 8 characters.",
+        "passwordLowercase": "Password must contain at least one lowercase letter.",
+        "passwordNumber": "Password must contain at least one number.",
+        "passwordMismatch": "Passwords do not match."
+      },
+      "dialogs": {
+        "editTitle": "Edit User",
+        "addTitle": "Add New User",
+        "editDesc": "Update user here. Click save when done.",
+        "addDesc": "Create new user here. Click save when done.",
+        "save": "Save Changes",
+        "saving": "Saving...",
+        "deleteTitle": "Delete User",
+        "deleteConfirm": "Are you sure you want to delete user {{username}}? This will permanently remove the user from the system. This action cannot be undone.",
+        "deleteInputPlaceholder": "Type username to confirm deletion.",
+        "usernameLabel": "Username:",
+        "warning": "Warning!",
+        "warningDesc": "Proceed with caution, this cannot be undone.",
+        "deleting": "Deleting...",
+        "inviteTitle": "Invite User",
+        "inviteDesc": "Invite new users to the system and assign them a role. They will receive an email invitation to set up their account.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "e.g.: john.doe@gmail.com",
+        "roleLabel": "Role",
+        "rolePlaceholder": "Select Role",
+        "loadingRoles": "Loading roles...",
+        "messageLabel": "Message (Optional)",
+        "messagePlaceholder": "Add a personal message to your invitation (optional)",
+        "invite": "Invite",
+        "inviting": "Inviting...",
+        "inviteEmailRequired": "Please enter the email to invite.",
+        "inviteRoleRequired": "Role is required.",
+        "multiDeleteTitle": "Delete {{count}} users",
+        "multiDeleteConfirm": "Are you sure you want to delete the selected users?\nThis action cannot be undone.",
+        "multiDeleteInputLabel": "Type \"{{word}}\" to confirm:",
+        "multiDeleteInputPlaceholder": "Type \"{{word}}\" to confirm.",
+        "multiDeleteInputError": "Please type \"{{word}}\" to confirm."
+      },
+      "page": {
+        "loadError": "Failed to load user data, please try again"
+      }
+    },
+    "roles": {
+      "title": "Role Management",
+      "description": "Manage user roles and cross-tenant permissions.",
+      "columns": {
+        "name": "Role Name",
+        "code": "Role Code",
+        "parent": "Inherited From",
+        "status": "Status",
+        "dataScope": "Data Scope",
+        "permissions": "Permission Count",
+        "menus": "Menu Count",
+        "sequence": "Display Order",
+        "actions": "Actions"
+      },
+      "actions": {
+        "create": "Create Role",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "dialogs": {
+        "createTitle": "Create Role",
+        "editTitle": "Edit Role",
+        "createDesc": "Create a new role, configure data scope, permissions and menus",
+        "editDesc": "Modify role details, data scope, permissions and menus",
+        "basicInfo": "Basic Info",
+        "roleName": "Role Name *",
+        "roleNamePlaceholder": "Enter role name",
+        "roleSequence": "Role Sequence",
+        "inheritedFrom": "Inherited From",
+        "parentPlaceholder": "Select parent role (optional)",
+        "none": "None",
+        "dataScope": "Data Scope",
+        "dataScopePlaceholder": "Select data scope",
+        "status": "Status",
+        "statusActive": "Active",
+        "statusInactive": "Inactive",
+        "permissionConfig": "Permission Config",
+        "noPermissions": "No permissions available",
+        "selectedPermissions": "{{count}} permissions selected",
+        "menuConfig": "Menu Config",
+        "dataLoading": "Loading data...",
+        "updating": "Updating...",
+        "creating": "Creating...",
+        "update": "Update",
+        "create": "Create",
+        "deleteTitle": "Delete Role",
+        "deleting": "Deleting...",
+        "menuPermission": "Menu Permissions"
+      },
+      "messages": {
+        "deleteSuccess": "Role deleted successfully",
+        "deleteFailed": "Failed to delete role",
+        "deleteConfirm": "Are you sure you want to delete role \"{{name}}\"? This action cannot be undone.",
+        "loadFailed": "Failed to load role data, please try again",
+        "loadDetailFailed": "Failed to load role details",
+        "loadMenusFailed": "Failed to load role menus",
+        "loadPermissionsFailed": "Failed to load role permissions",
+        "createSuccess": "Role created successfully",
+        "updateSuccess": "Role updated successfully",
+        "createFailed": "Failed to create role",
+        "updateFailed": "Failed to update role"
+      },
+      "table": {
+        "searchPlaceholder": "Search roles...",
+        "totalRoles": "Total {{count}} roles",
+        "noData": "No data.",
+        "system": "System",
+        "statusActive": "Active",
+        "statusInactive": "Inactive",
+        "dataScopeAll": "All Data",
+        "dataScopeDept": "Department Only",
+        "dataScopeDeptAndChild": "Department and Children",
+        "dataScopeSelf": "Self Only",
+        "inherited": "(Inherited {{count}})",
+        "inheritedFrom": "Permissions inherited from \"{{name}}\":",
+        "menuSelected": "{{count}} selected",
+        "selectAll": "Select All",
+        "deselectAll": "Deselect All",
+        "expand": "Expand",
+        "collapse": "Collapse"
+      },
+      "validation": {
+        "nameRequired": "Role name is required",
+        "nameMaxLength": "Role name must be at most 100 characters",
+        "sequenceNonNegative": "Sequence must be a non-negative integer"
+      }
+    },
+    "menus": {
+      "title": "Menu Management",
+      "description": "Manage your menus",
+      "columns": {
+        "name": "Menu Name",
+        "type": "Type",
+        "sequence": "Order",
+        "path": "Path",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "create": "Create Menu",
+        "edit": "Edit",
+        "add": "Add Child",
+        "delete": "Delete"
+      },
+      "type": {
+        "menu": "Menu",
+        "button": "Button"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "openMenu": "Open Menu",
+      "search": "Search menu name, code, or path...",
+      "noMatch": "No matching menu items found",
+      "loadFailed": "Failed to load menus",
+      "cancel": "Cancel",
+      "confirm": "OK",
+      "update": "Update",
+      "dialogs": {
+        "editTitle": "Edit Menu",
+        "createTitle": "Add Menu",
+        "editDesc": "Modify menu configuration",
+        "createDesc": "Create a new menu item and configure its properties",
+        "deleteTitle": "Delete Menu",
+        "deleteDesc": "Are you sure you want to delete menu \"{{name}}\"? This action cannot be undone and will also delete all sub-menus.",
+        "deleteSuccess": "Menu deleted successfully",
+        "deleteFailed": "Failed to delete menu",
+        "deleting": "Deleting...",
+        "updateSuccess": "Menu updated successfully",
+        "createSuccess": "Menu created successfully",
+        "updateFailed": "Failed to update menu",
+        "createFailed": "Failed to create menu"
+      },
+      "form": {
+        "parentMenu": "Parent Menu",
+        "rootCategory": "Root Category",
+        "menuType": "Menu Type",
+        "menuName": "Menu Name",
+        "buttonName": "Button Name",
+        "menuNamePlaceholder": "Enter menu name",
+        "buttonNamePlaceholder": "Enter button name",
+        "routePath": "Route Path",
+        "routePathPlaceholder": "Enter route path",
+        "menuIcon": "Menu Icon",
+        "iconPlaceholder": "Click to select icon",
+        "displayOrder": "Display Order",
+        "displayOrderPlaceholder": "Enter display order",
+        "isExternal": "External Link",
+        "yes": "Yes",
+        "no": "No",
+        "displayStatus": "Display Status",
+        "show": "Show",
+        "hide": "Hide",
+        "menuStatus": "Menu Status",
+        "permissionCode": "Permission Code",
+        "permissionPlaceholder": "Select permission code...",
+        "permissionSearch": "Search permission code...",
+        "permissionNotFound": "Permission code not found",
+        "permissionInvalid": "Permission code does not exist in the predefined list"
+      },
+      "apiResources": {
+        "title": "API Resources",
+        "select": "Select",
+        "searchPlaceholder": "Search API resources...",
+        "all": "All",
+        "other": "Other",
+        "noResults": "No matching API resources found"
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "sequenceMin": "Sequence must be greater than or equal to 0"
+      }
+    },
+    "dicts": {
+      "title": "Dictionary Management",
+      "description": "Manage system dictionary types and items, configure business data dictionaries.",
+      "columns": {
+        "code": "Type Code",
+        "name": "Type Name",
+        "status": "Status",
+        "remark": "Remark",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "actions": {
+        "createType": "Create Dictionary Type",
+        "viewItems": "View Items",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "table": {
+        "searchPlaceholder": "Search dictionary types...",
+        "noData": "No dictionary types"
+      },
+      "types": {
+        "dialogs": {
+          "createTitle": "Create Dictionary Type",
+          "createDesc": "Create a new dictionary type for grouping dictionary items",
+          "editTitle": "Edit Dictionary Type",
+          "editDesc": "Modify dictionary type information",
+          "deleteTitle": "Confirm Delete",
+          "deleteDesc": "Are you sure you want to delete dictionary type \"{{name}}\"?\nDeleting a dictionary type will not automatically delete its items; the type cannot be deleted if items exist.",
+          "creating": "Creating...",
+          "saving": "Saving...",
+          "deleting": "Deleting...",
+          "confirmDelete": "Confirm Delete"
+        },
+        "form": {
+          "code": "Type Code *",
+          "codePlaceholder": "Enter type code",
+          "name": "Type Name *",
+          "namePlaceholder": "Enter type name",
+          "status": "Status",
+          "statusPlaceholder": "Select status",
+          "statusActive": "Active",
+          "statusInactive": "Inactive",
+          "remark": "Remark",
+          "remarkPlaceholder": "Enter remark",
+          "validation": {
+            "codeRequired": "Please enter type code",
+            "nameRequired": "Please enter type name"
+          }
+        },
+        "bulk": {
+          "selectedCount": "{{count}} dictionary types selected",
+          "enable": "Batch Enable",
+          "disable": "Batch Disable",
+          "delete": "Batch Delete",
+          "deleteTitle": "Confirm Delete",
+          "deleteDesc": "Are you sure you want to delete the selected {{count}} dictionary types?\nAll dictionary items under these types will also be deleted. This action cannot be undone.",
+          "deleting": "Deleting...",
+          "confirmDelete": "Confirm Delete"
+        },
+        "messages": {
+          "createSuccess": "Dictionary type created successfully",
+          "createFailed": "Failed to create",
+          "updateSuccess": "Dictionary type updated successfully",
+          "updateFailed": "Failed to update",
+          "deleteSuccess": "Dictionary type deleted successfully",
+          "deleteFailed": "Failed to delete",
+          "batchDeleteSuccess": "{{count}} dictionary types deleted",
+          "batchDeleteFailed": "Failed to batch delete dictionary types",
+          "batchUpdateSuccess": "{{count}} dictionary types {{action}}",
+          "batchUpdateFailed": "Failed to batch update dictionary type status",
+          "loadFailed": "Failed to load dictionary data, please try again"
+        }
+      },
+      "items": {
+        "listTitle": "Dictionary Items",
+        "listTitleSuffix": " ({{name}} | Code: {{code}})",
+        "listHint": "Showing items under this dictionary type only",
+        "selectTypeHint": "Please select a dictionary type",
+        "createItem": "Add Item",
+        "noData": "No dictionary items, please create one",
+        "selectTypeFirst": "Please select a dictionary type first",
+        "loading": "Loading...",
+        "loadFailed": "Failed to load",
+        "default": "Default",
+        "statusActive": "Active",
+        "statusInactive": "Inactive",
+        "columns": {
+          "label": "Label",
+          "value": "Value",
+          "sort": "Sort",
+          "isDefault": "Default",
+          "status": "Status",
+          "color": "Color",
+          "actions": "Actions"
+        },
+        "actions": {
+          "edit": "Edit",
+          "setDefault": "Set as Default",
+          "disable": "Disable",
+          "enable": "Enable",
+          "delete": "Delete"
+        },
+        "dialogs": {
+          "createTitle": "Create Dictionary Item",
+          "createDesc": "Create a new item for dictionary type \"{{name}}\"",
+          "editTitle": "Edit Dictionary Item",
+          "editDesc": "Modify dictionary item information",
+          "deleteTitle": "Confirm Delete",
+          "deleteDesc": "Are you sure you want to delete dictionary item \"{{label}}\"?\nThis action cannot be undone.",
+          "creating": "Creating...",
+          "saving": "Saving...",
+          "deleting": "Deleting...",
+          "confirmDelete": "Confirm Delete"
+        },
+        "form": {
+          "label": "Label *",
+          "labelPlaceholder": "Enter display label",
+          "value": "Value *",
+          "valuePlaceholder": "Enter actual value",
+          "sort": "Sort",
+          "color": "Color",
+          "isDefault": "Set as default",
+          "status": "Status",
+          "statusPlaceholder": "Select status",
+          "statusActive": "Active",
+          "statusInactive": "Inactive",
+          "remark": "Remark",
+          "remarkPlaceholder": "Enter remark",
+          "validation": {
+            "labelRequired": "Please enter display label",
+            "valueRequired": "Please enter actual value"
+          }
+        },
+        "messages": {
+          "selectTypeFirst": "Please select a dictionary type first",
+          "alreadyDefault": "This item is already the default",
+          "setDefaultSuccess": "Default item set successfully",
+          "setDefaultFailed": "Failed to set default item",
+          "toggleStatusSuccess": "{{action}} successfully",
+          "toggleStatusFailed": "Failed to {{action}}"
+        }
+      }
+    },
+    "apiResources": {
+      "title": "API Resource Management",
+      "description": "Manage API resources and permission bindings",
+      "columns": {
+        "module": "Module",
+        "method": "Method",
+        "path": "Path",
+        "actions": "Actions"
+      },
+      "table": {
+        "searchPlaceholder": "Filter API path...",
+        "noResults": "No results.",
+        "moduleFilter": "Module",
+        "methodFilter": "Method"
+      },
+      "actions": {
+        "create": "Create API Resource",
+        "edit": "Edit",
+        "delete": "Delete",
+        "openMenu": "Open Menu"
+      },
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "User List",
+        "path": "Path",
+        "pathPlaceholder": "/api/v1/example",
+        "method": "Method",
+        "methodPlaceholder": "Select HTTP method",
+        "module": "Module",
+        "modulePlaceholder": "system",
+        "description": "Description",
+        "descriptionPlaceholder": "API resource description",
+        "validation": {
+          "nameRequired": "Name is required",
+          "pathRequired": "Path is required",
+          "methodRequired": "Method is required"
+        }
+      },
+      "dialogs": {
+        "createTitle": "Create API Resource",
+        "editTitle": "Edit API Resource",
+        "createDesc": "Create a new API resource here. Click save when done.",
+        "editDesc": "Update API resource here. Click save when done.",
+        "save": "Save Changes",
+        "saving": "Saving...",
+        "delete": "Delete",
+        "deleting": "Deleting...",
+        "deleteTitle": "Delete API Resource",
+        "deleteDesc": "Are you sure you want to delete API resource {{method}} {{path}}? This will permanently remove the API resource from the system. This action cannot be undone.",
+        "warning": "Warning!",
+        "warningDesc": "Proceed with caution, this cannot be undone."
+      },
+      "messages": {
+        "loadFailed": "Failed to load API resource data, please try again",
+        "updating": "Updating...",
+        "pathCopied": "API path copied to clipboard",
+        "createSuccess": "API resource created successfully",
+        "createFailed": "Failed to create API resource",
+        "updateSuccess": "API resource updated successfully",
+        "updateFailed": "Failed to update API resource",
+        "deleteSuccess": "API resource deleted successfully",
+        "deleteFailed": "Failed to delete API resource"
+      }
+    },
+    "loginLogs": {
+      "title": "Login Logs",
+      "description": "View and manage login log records",
+      "columns": {
+        "username": "Username",
+        "loginIp": "IP Address",
+        "status": "Status",
+        "browser": "Browser",
+        "os": "Operating System",
+        "device": "Device",
+        "failureReason": "Failure Reason",
+        "loginTime": "Login Time",
+        "success": "Success",
+        "failed": "Failed",
+        "unknown": "Unknown"
+      },
+      "table": {
+        "searchPlaceholder": "Filter username...",
+        "status": "Status",
+        "success": "Success",
+        "failed": "Failed",
+        "noResults": "No results."
+      },
+      "actions": {
+        "refresh": "Refresh",
+        "clearAll": "Clear All"
+      },
+      "messages": {
+        "refreshSuccess": "Data refreshed",
+        "loadFailed": "Failed to load login logs, please try again",
+        "clearSuccess": "All login logs cleared",
+        "clearFailed": "Failed to clear login logs"
+      },
+      "dialogs": {
+        "clearTitle": "Confirm Clear All Logs",
+        "clearDesc": "This will permanently delete all login log records and cannot be recovered. Are you sure you want to continue?",
+        "confirmClear": "Confirm Clear"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account settings and email preferences.",
+    "selectSection": "Select section",
+    "profile": {
+      "title": "Profile"
+    },
+    "account": {
+      "title": "Account Settings",
+      "description": "Manage your account information.",
+      "updateDescription": "Update your account settings. Set your preferred language and timezone."
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Customize the interface appearance.",
+      "updateDescription": "Customize the appearance of the application. Auto switch between day and night themes.",
+      "font": "Font",
+      "fontDescription": "Set the font you want to use in the dashboard.",
+      "theme": "Theme",
+      "themeDescription": "Select the theme for the dashboard.",
+      "light": "Light",
+      "dark": "Dark",
+      "updatePreferences": "Update preferences"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "download": "Download",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "reports": "Reports",
+    "recentSales": "Recent Sales",
+    "recentSalesDescription": "You made 265 sales this month.",
+    "stats": {
+      "totalRevenue": "Total Revenue",
+      "revenueGrowth": "+20.1% from last month",
+      "subscriptions": "Subscriptions",
+      "subscriptionsGrowth": "+180.1% from last month",
+      "sales": "Sales",
+      "salesGrowth": "+19% from last month",
+      "activeNow": "Active Now",
+      "activeGrowth": "+201 since last hour"
+    }
+  },
+  "signOut": {
+    "title": "Sign Out",
+    "description": "Are you sure you want to sign out? You will need to log in again to access your account",
+    "confirm": "Sign Out"
+  },
+  "pagination": {
+    "total": "Total {{total}} items",
+    "page": "Page {{current}} of {{pages}}",
+    "itemsPerPage": "{{count}} items per page",
+    "rowsPerPage": "Rows per page",
+    "firstPage": "First page",
+    "prevPage": "Previous page",
+    "nextPage": "Next page",
+    "lastPage": "Last page",
+    "goToPage": "Go to page {{page}}"
+  }
+}

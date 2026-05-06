@@ -1,0 +1,119 @@
+/*
+ * Copyright (c) 2026 zczhendev
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+import { useEffect, useState } from 'react'
+import { useAuthStore } from '@/stores/auth-store'
+import {
+  getDynamicSidebarData,
+  getSidebarData,
+} from '@/components/layout/data/dynamic-sidebar-data'
+import { type SidebarData } from '@/components/layout/types'
+
+export function useSidebarData() {
+  const [sidebarData, setSidebarData] = useState<SidebarData>(getSidebarData())
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  // 监听用户状态变化
+  const { auth } = useAuthStore()
+  // 创建更稳定的用户标识符
+  const userKey = JSON.stringify({
+    accountNo: auth.user?.accountNo,
+    email: auth.user?.email,
+    profileId: auth.profile?.id,
+    profileEmail: auth.profile?.email,
+    accessToken: auth.accessToken ? auth.accessToken.substring(0, 20) : null, // 只用token前20字符作为标识
+  })
+
+  useEffect(() => {
+    let mounted = true
+
+    const loadData = async () => {
+      // Skip loading if user is not authenticated (e.g. during logout)
+      if (!useAuthStore.getState().auth.accessToken) {
+        return
+      }
+
+      try {
+        setIsLoading(true)
+        setError(null)
+
+        const dynamicData = await getDynamicSidebarData()
+
+        if (mounted) {
+          setSidebarData(dynamicData)
+        }
+      } catch (err) {
+        if (mounted) {
+          setError(
+            err instanceof Error ? err.message : 'Failed to load menu data'
+          )
+          console.error('Failed to load sidebar data:', err)
+          // Keep the current/fallback data on error
+        }
+      } finally {
+        if (mounted) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadData()
+
+    return () => {
+      mounted = false
+    }
+  }, [userKey]) // 当用户关键信息改变时重新加载数据
+
+  const reloadData = async () => {
+    try {
+      setIsLoading(true)
+      setError(null)
+
+      // Clear cache first to force fresh data load
+      const { menuService } = await import('@/services/menu-service')
+      menuService.clearCache()
+      console.log('Manual reload: cache cleared, loading fresh data...')
+
+      const dynamicData = await getDynamicSidebarData()
+      setSidebarData(dynamicData)
+      console.log(
+        'Manual reload completed, nav groups:',
+        dynamicData.navGroups?.length || 0
+      )
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : 'Failed to reload menu data'
+      )
+      console.error('Manual reload failed:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return {
+    sidebarData,
+    isLoading,
+    error,
+    reloadData,
+  }
+}

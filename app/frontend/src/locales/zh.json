@@ -1,0 +1,729 @@
+{
+  "common": {
+    "buttons": {
+      "save": "保存",
+      "cancel": "取消",
+      "delete": "删除",
+      "edit": "编辑",
+      "create": "创建",
+      "search": "搜索",
+      "reset": "重置",
+      "confirm": "确认",
+      "back": "返回",
+      "loading": "加载中...",
+      "reload": "重新加载",
+      "continue": "继续",
+      "download": "下载"
+    },
+    "status": {
+      "active": "启用",
+      "inactive": "禁用",
+      "pending": "待审核"
+    },
+    "messages": {
+      "saveSuccess": "保存成功",
+      "deleteSuccess": "删除成功",
+      "operationFailed": "操作失败",
+      "confirmDelete": "确认删除",
+      "noData": "暂无数据",
+      "loadFailed": "加载数据失败，请重试",
+      "noRecords": "当前没有符合条件的记录"
+    },
+    "comingSoon": {
+      "title": "即将推出！",
+      "description": "此页面尚未创建。",
+      "stayTuned": "敬请期待！"
+    },
+    "learnMore": "了解更多",
+    "dataTable": {
+      "columnOptions": "列选项"
+    },
+    "selectOption": "选择选项"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "username": "用户名",
+      "password": "密码",
+      "rememberMe": "记住我",
+      "forgotPassword": "忘记密码",
+      "submit": "登录",
+      "error": "登录失败，请检查用户名和密码",
+      "welcome": "欢迎回来，{{name}}！",
+      "defaultName": "用户",
+      "noToken": "未收到访问令牌，请重试",
+      "networkError": "网络错误，请稍后重试",
+      "usernamePlaceholder": "用户名或邮箱或手机号",
+      "usernameRequired": "请输入用户名",
+      "passwordRequired": "请输入密码",
+      "description": "输入您的用户名和密码登录系统",
+      "footer": "登录即表示您同意我们的服务条款和隐私政策",
+      "brandTagline": "高效、安全的后台管理系统"
+    },
+    "signUp": {
+      "title": "创建账户",
+      "description": "输入您的邮箱和密码来创建账户。",
+      "alreadyHaveAccount": "已经有账户？",
+      "signIn": "登录",
+      "footer": "通过创建账户，您同意我们的",
+      "terms": "服务条款",
+      "and": "和",
+      "privacy": "隐私政策",
+      "email": "邮箱",
+      "emailPlaceholder": "name@example.com",
+      "emailRequired": "请输入您的邮箱",
+      "password": "密码",
+      "passwordRequired": "请输入您的密码",
+      "passwordMinLength": "密码必须至少为7个字符",
+      "confirmPassword": "确认密码",
+      "confirmPasswordRequired": "请确认您的密码",
+      "passwordMismatch": "密码不匹配。",
+      "submit": "创建账户"
+    },
+    "forgotPassword": {
+      "title": "忘记密码",
+      "description": "输入您注册的邮箱，我们将发送一个链接给您来重置密码。",
+      "noAccount": "没有账户？",
+      "signUp": "注册",
+      "email": "邮箱",
+      "emailPlaceholder": "name@example.com",
+      "emailRequired": "请输入您的邮箱",
+      "submit": "继续",
+      "sending": "发送邮件中...",
+      "sent": "邮件已发送至",
+      "error": "错误"
+    },
+    "otp": {
+      "title": "双因素身份验证",
+      "description": "请输入验证码。我们已将验证码发送到您的邮箱。",
+      "notReceived": "没有收到？",
+      "resend": "重新发送验证码",
+      "verificationCode": "一次性密码",
+      "codeRequired": "请输入6位数字验证码。",
+      "verify": "验证"
+    }
+  },
+  "header": {
+    "search": "搜索...",
+    "profile": "个人资料",
+    "settings": "设置",
+    "logout": "退出登录",
+    "language": "语言"
+  },
+  "sidebar": {
+    "dashboard": "仪表板",
+    "system": "系统管理",
+    "settings": "设置",
+    "help": "帮助中心",
+    "adminPanel": "管理后台"
+  },
+  "configDrawer": {
+    "title": "主题设定",
+    "description": "调整外观和布局以适应您的偏好。",
+    "theme": "主题",
+    "themeOptions": {
+      "system": "跟随系统",
+      "light": "明亮",
+      "dark": "黑暗"
+    },
+    "style": "样式",
+    "styleOptions": {
+      "inset": "嵌入",
+      "floating": "浮动",
+      "sidebar": "侧边栏"
+    },
+    "layout": "布局",
+    "layoutOptions": {
+      "default": "默认",
+      "compact": "紧凑",
+      "fullscreen": "全屏"
+    }
+  },
+  "iconPicker": {
+    "title": "选择图标",
+    "searchPlaceholder": "搜索图标...",
+    "selected": "已选择: {{value}}",
+    "noResults": "未找到匹配的图标"
+  },
+  "system": {
+    "users": {
+      "title": "用户列表",
+      "description": "在此管理您的用户及其角色。",
+      "columns": {
+        "username": "用户名",
+        "email": "邮箱",
+        "phone": "手机号码",
+        "status": "状态",
+        "roles": "角色",
+        "createdAt": "创建时间",
+        "actions": "操作"
+      },
+      "actions": {
+        "create": "创建用户",
+        "edit": "编辑",
+        "delete": "删除",
+        "invite": "邀请用户",
+        "add": "添加用户",
+        "resetPassword": "重置密码",
+        "openMenu": "打开菜单"
+      },
+      "bulk": {
+        "inviteSelected": "邀请选中的用户",
+        "activateSelected": "激活选中的用户",
+        "deactivateSelected": "停用选中的用户",
+        "deleteSelected": "删除选中的用户"
+      },
+      "form": {
+        "username": "用户名",
+        "usernamePlaceholder": "用户名",
+        "email": "邮箱",
+        "emailPlaceholder": "例如：john.doe@gmail.com",
+        "phone": "手机号码",
+        "phonePlaceholder": "+86 13812345678",
+        "status": "状态",
+        "statusPlaceholder": "选择状态",
+        "password": "密码",
+        "passwordPlaceholder": "例如：S3cur3P@ssw0rd",
+        "confirmPassword": "确认密码",
+        "roles": "角色",
+        "rolesPlaceholder": "选择角色",
+        "statusActive": "激活",
+        "statusInactive": "停用",
+        "statusInvited": "已邀请",
+        "statusSuspended": "暂停"
+      },
+      "validation": {
+        "usernameRequired": "用户名为必填项。",
+        "emailRequired": "邮箱为必填项。",
+        "statusRequired": "状态为必填项。",
+        "passwordRequired": "密码为必填项。",
+        "passwordMinLength": "密码至少为8个字符。",
+        "passwordLowercase": "密码必须包含至少一个小写字母。",
+        "passwordNumber": "密码必须包含至少一个数字。",
+        "passwordMismatch": "密码不匹配。"
+      },
+      "dialogs": {
+        "editTitle": "编辑用户",
+        "addTitle": "添加新用户",
+        "editDesc": "在此更新用户。完成后点击保存。",
+        "addDesc": "在此创建新用户。完成后点击保存。",
+        "save": "保存更改",
+        "saving": "保存中...",
+        "deleteTitle": "删除用户",
+        "deleteConfirm": "您确定要删除用户 {{username}} 吗？此操作将永久从系统中删除用户 {{username}}。此操作不可撤销。",
+        "deleteInputPlaceholder": "输入用户名以确认删除。",
+        "usernameLabel": "用户名：",
+        "warning": "警告！",
+        "warningDesc": "请谨慎操作，此操作不可回滚。",
+        "deleting": "删除中...",
+        "inviteTitle": "邀请用户",
+        "inviteDesc": "邀请新用户加入系统并担任指定角色。他们将收到一封邮件邀请来设置其账户。",
+        "emailLabel": "邮箱",
+        "emailPlaceholder": "例如：john.doe@gmail.com",
+        "roleLabel": "角色",
+        "rolePlaceholder": "选择角色",
+        "loadingRoles": "加载角色中...",
+        "messageLabel": "消息（可选）",
+        "messagePlaceholder": "在您的邀请中添加个人留言（可选）",
+        "invite": "邀请",
+        "inviting": "邀请中...",
+        "inviteEmailRequired": "请输入要邀请的邮箱。",
+        "inviteRoleRequired": "角色为必填项。",
+        "multiDeleteTitle": "删除 {{count}} 个用户",
+        "multiDeleteConfirm": "您确定要删除所选用户吗？\n此操作不可撤销。",
+        "multiDeleteInputLabel": "输入 \"{{word}}\" 以确认：",
+        "multiDeleteInputPlaceholder": "输入 \"{{word}}\" 以确认。",
+        "multiDeleteInputError": "请输入 \"{{word}}\" 以确认。"
+      },
+      "page": {
+        "loadError": "加载用户数据失败，请重试"
+      }
+    },
+    "roles": {
+      "title": "角色管理",
+      "description": "管理用户角色和跨租户权限。",
+      "columns": {
+        "name": "角色名称",
+        "code": "角色编码",
+        "parent": "继承自",
+        "status": "状态",
+        "dataScope": "数据范围",
+        "permissions": "权限数量",
+        "menus": "菜单数量",
+        "sequence": "显示顺序",
+        "actions": "操作"
+      },
+      "actions": {
+        "create": "创建角色",
+        "edit": "编辑",
+        "delete": "删除"
+      },
+      "dialogs": {
+        "createTitle": "创建角色",
+        "editTitle": "编辑角色",
+        "createDesc": "创建新的角色，配置数据范围、权限和菜单",
+        "editDesc": "修改角色信息、数据范围、权限和菜单",
+        "basicInfo": "基本信息",
+        "roleName": "角色名称 *",
+        "roleNamePlaceholder": "请输入角色名称",
+        "roleSequence": "角色顺序",
+        "inheritedFrom": "继承自",
+        "parentPlaceholder": "选择父角色（可选）",
+        "none": "无",
+        "dataScope": "数据范围",
+        "dataScopePlaceholder": "选择数据范围",
+        "status": "状态",
+        "statusActive": "正常",
+        "statusInactive": "停用",
+        "permissionConfig": "权限配置",
+        "noPermissions": "暂无权限数据",
+        "selectedPermissions": "已选择 {{count}} 个权限",
+        "menuConfig": "菜单配置",
+        "dataLoading": "数据加载中...",
+        "updating": "更新中...",
+        "creating": "创建中...",
+        "update": "更新",
+        "create": "创建",
+        "deleteTitle": "删除角色",
+        "deleting": "删除中...",
+        "menuPermission": "菜单权限"
+      },
+      "messages": {
+        "deleteSuccess": "角色删除成功",
+        "deleteFailed": "角色删除失败",
+        "deleteConfirm": "确定要删除角色\"{{name}}\"吗？此操作不可撤销。",
+        "loadFailed": "加载角色数据失败，请重试",
+        "loadDetailFailed": "加载角色详情失败",
+        "loadMenusFailed": "加载角色菜单失败",
+        "loadPermissionsFailed": "加载角色权限失败",
+        "createSuccess": "角色创建成功",
+        "updateSuccess": "角色更新成功",
+        "createFailed": "角色创建失败",
+        "updateFailed": "角色更新失败"
+      },
+      "table": {
+        "searchPlaceholder": "搜索角色...",
+        "totalRoles": "共 {{count}} 个角色",
+        "noData": "没有数据。",
+        "system": "系统",
+        "statusActive": "正常",
+        "statusInactive": "停用",
+        "dataScopeAll": "全部数据",
+        "dataScopeDept": "本部门",
+        "dataScopeDeptAndChild": "本部门及子部门",
+        "dataScopeSelf": "仅自己",
+        "inherited": "(继承 {{count}})",
+        "inheritedFrom": "继承自「{{name}}」的权限：",
+        "menuSelected": "已选择 {{count}} 个",
+        "selectAll": "全选",
+        "deselectAll": "全不选",
+        "expand": "展开",
+        "collapse": "折叠"
+      },
+      "validation": {
+        "nameRequired": "角色名称是必填的",
+        "nameMaxLength": "角色名称最多100个字符",
+        "sequenceNonNegative": "序号必须是非负整数"
+      }
+    },
+    "menus": {
+      "title": "菜单管理",
+      "description": "管理您的菜单",
+      "columns": {
+        "name": "菜单名称",
+        "type": "类型",
+        "sequence": "排序",
+        "path": "路径",
+        "status": "状态",
+        "actions": "操作"
+      },
+      "actions": {
+        "create": "创建菜单",
+        "edit": "修改",
+        "add": "新增",
+        "delete": "删除"
+      },
+      "type": {
+        "menu": "菜单",
+        "button": "按钮"
+      },
+      "status": {
+        "active": "正常",
+        "inactive": "停用"
+      },
+      "openMenu": "打开菜单",
+      "search": "搜索菜单名称、编码或路径...",
+      "noMatch": "没有找到匹配的菜单项",
+      "loadFailed": "加载菜单失败",
+      "cancel": "取消",
+      "confirm": "确定",
+      "update": "更新",
+      "dialogs": {
+        "editTitle": "编辑菜单",
+        "createTitle": "添加菜单",
+        "editDesc": "修改菜单的配置信息",
+        "createDesc": "创建新的菜单项并配置其属性",
+        "deleteTitle": "删除菜单",
+        "deleteDesc": "确定要删除菜单「{{name}}」吗？此操作不可撤销，同时也会删除所有子菜单。",
+        "deleteSuccess": "菜单删除成功",
+        "deleteFailed": "删除菜单失败",
+        "deleting": "删除中...",
+        "updateSuccess": "菜单更新成功",
+        "createSuccess": "菜单创建成功",
+        "updateFailed": "更新菜单失败",
+        "createFailed": "创建菜单失败"
+      },
+      "form": {
+        "parentMenu": "上级菜单",
+        "rootCategory": "主类目",
+        "menuType": "菜单类型",
+        "menuName": "菜单名称",
+        "buttonName": "按钮名称",
+        "menuNamePlaceholder": "请输入菜单名称",
+        "buttonNamePlaceholder": "请输入按钮名称",
+        "routePath": "路由地址",
+        "routePathPlaceholder": "请输入路由地址",
+        "menuIcon": "菜单图标",
+        "iconPlaceholder": "点击选择图标",
+        "displayOrder": "显示排序",
+        "displayOrderPlaceholder": "输入显示排序",
+        "isExternal": "是否外链",
+        "yes": "是",
+        "no": "否",
+        "displayStatus": "显示状态",
+        "show": "显示",
+        "hide": "隐藏",
+        "menuStatus": "菜单状态",
+        "permissionCode": "权限标识",
+        "permissionPlaceholder": "选择权限标识...",
+        "permissionSearch": "搜索权限标识...",
+        "permissionNotFound": "未找到权限标识",
+        "permissionInvalid": "权限标识不存在于预定义列表中"
+      },
+      "apiResources": {
+        "title": "API资源",
+        "select": "选择",
+        "searchPlaceholder": "搜索API资源...",
+        "all": "全部",
+        "other": "其他",
+        "noResults": "没有找到相关API资源"
+      },
+      "validation": {
+        "nameRequired": "名称是必填的",
+        "sequenceMin": "序号必须大于等于0"
+      }
+    },
+    "dicts": {
+      "title": "字典管理",
+      "description": "管理系统字典类型和字典项，配置业务数据字典。",
+      "columns": {
+        "code": "类型编码",
+        "name": "类型名称",
+        "status": "状态",
+        "remark": "备注",
+        "createdAt": "创建时间",
+        "actions": "操作"
+      },
+      "status": {
+        "active": "启用",
+        "inactive": "禁用"
+      },
+      "actions": {
+        "createType": "创建字典类型",
+        "viewItems": "查看字典项",
+        "edit": "编辑",
+        "delete": "删除"
+      },
+      "table": {
+        "searchPlaceholder": "搜索字典类型...",
+        "noData": "暂无字典类型"
+      },
+      "types": {
+        "dialogs": {
+          "createTitle": "创建字典类型",
+          "createDesc": "创建新的字典类型，用于分组管理字典项",
+          "editTitle": "编辑字典类型",
+          "editDesc": "修改字典类型信息",
+          "deleteTitle": "确认删除",
+          "deleteDesc": "您确定要删除字典类型 \"{{name}}\" 吗？\n删除字典类型不会自动删除其下字典项；如存在字典项将无法删除该类型。",
+          "creating": "创建中...",
+          "saving": "保存中...",
+          "deleting": "删除中...",
+          "confirmDelete": "确认删除"
+        },
+        "form": {
+          "code": "类型编码 *",
+          "codePlaceholder": "请输入类型编码",
+          "name": "类型名称 *",
+          "namePlaceholder": "请输入类型名称",
+          "status": "状态",
+          "statusPlaceholder": "选择状态",
+          "statusActive": "启用",
+          "statusInactive": "禁用",
+          "remark": "备注",
+          "remarkPlaceholder": "请输入备注",
+          "validation": {
+            "codeRequired": "请输入类型编码",
+            "nameRequired": "请输入类型名称"
+          }
+        },
+        "bulk": {
+          "selectedCount": "已选择 {{count}} 个字典类型",
+          "enable": "批量启用",
+          "disable": "批量禁用",
+          "delete": "批量删除",
+          "deleteTitle": "确认删除",
+          "deleteDesc": "您确定要删除选中的 {{count}} 个字典类型吗？\n删除后这些类型下的所有字典项也将被删除，此操作不可恢复。",
+          "deleting": "删除中...",
+          "confirmDelete": "确认删除"
+        },
+        "messages": {
+          "createSuccess": "创建字典类型成功",
+          "createFailed": "创建失败",
+          "updateSuccess": "更新字典类型成功",
+          "updateFailed": "更新失败",
+          "deleteSuccess": "删除字典类型成功",
+          "deleteFailed": "删除失败",
+          "batchDeleteSuccess": "已删除 {{count}} 个字典类型",
+          "batchDeleteFailed": "批量删除字典类型失败",
+          "batchUpdateSuccess": "已{{action}} {{count}} 个字典类型",
+          "batchUpdateFailed": "批量更新字典类型状态失败",
+          "loadFailed": "加载字典数据失败，请重试"
+        }
+      },
+      "items": {
+        "listTitle": "字典项列表",
+        "listTitleSuffix": "（{{name}}｜编码：{{code}}）",
+        "listHint": "仅展示该字典类型下的字典项",
+        "selectTypeHint": "请选择字典类型",
+        "createItem": "新增字典项",
+        "noData": "暂无字典项，请创建字典项",
+        "selectTypeFirst": "请先选择一个字典类型",
+        "loading": "加载中...",
+        "loadFailed": "加载失败",
+        "default": "默认",
+        "statusActive": "启用",
+        "statusInactive": "禁用",
+        "columns": {
+          "label": "标签",
+          "value": "值",
+          "sort": "排序",
+          "isDefault": "默认",
+          "status": "状态",
+          "color": "颜色",
+          "actions": "操作"
+        },
+        "actions": {
+          "edit": "编辑",
+          "setDefault": "设为默认",
+          "disable": "禁用",
+          "enable": "启用",
+          "delete": "删除"
+        },
+        "dialogs": {
+          "createTitle": "创建字典项",
+          "createDesc": "为字典类型 \"{{name}}\" 创建新的字典项",
+          "editTitle": "编辑字典项",
+          "editDesc": "修改字典项信息",
+          "deleteTitle": "确认删除",
+          "deleteDesc": "您确定要删除字典项 \"{{label}}\" 吗？\n此操作不可恢复，请谨慎操作。",
+          "creating": "创建中...",
+          "saving": "保存中...",
+          "deleting": "删除中...",
+          "confirmDelete": "确认删除"
+        },
+        "form": {
+          "label": "标签 *",
+          "labelPlaceholder": "请输入显示标签",
+          "value": "值 *",
+          "valuePlaceholder": "请输入实际值",
+          "sort": "排序",
+          "color": "颜色",
+          "isDefault": "设为默认项",
+          "status": "状态",
+          "statusPlaceholder": "选择状态",
+          "statusActive": "启用",
+          "statusInactive": "禁用",
+          "remark": "备注",
+          "remarkPlaceholder": "请输入备注",
+          "validation": {
+            "labelRequired": "请输入显示标签",
+            "valueRequired": "请输入实际值"
+          }
+        },
+        "messages": {
+          "selectTypeFirst": "请先选择字典类型",
+          "alreadyDefault": "当前项已是默认项",
+          "setDefaultSuccess": "设置默认项成功",
+          "setDefaultFailed": "设置默认项失败",
+          "toggleStatusSuccess": "{{action}}成功",
+          "toggleStatusFailed": "{{action}}失败"
+        }
+      }
+    },
+    "apiResources": {
+      "title": "API资源管理",
+      "description": "管理API资源和权限绑定",
+      "columns": {
+        "module": "模块",
+        "method": "方法",
+        "path": "路径",
+        "actions": "操作"
+      },
+      "table": {
+        "searchPlaceholder": "筛选API路径...",
+        "noResults": "没有结果。",
+        "moduleFilter": "模块",
+        "methodFilter": "方法"
+      },
+      "actions": {
+        "create": "创建API资源",
+        "edit": "编辑",
+        "delete": "删除",
+        "openMenu": "打开菜单"
+      },
+      "form": {
+        "name": "名称",
+        "namePlaceholder": "用户列表",
+        "path": "路径",
+        "pathPlaceholder": "/api/v1/example",
+        "method": "方法",
+        "methodPlaceholder": "选择HTTP方法",
+        "module": "模块",
+        "modulePlaceholder": "system",
+        "description": "描述",
+        "descriptionPlaceholder": "API资源描述",
+        "validation": {
+          "nameRequired": "名称不能为空",
+          "pathRequired": "路径不能为空",
+          "methodRequired": "方法不能为空"
+        }
+      },
+      "dialogs": {
+        "createTitle": "创建API资源",
+        "editTitle": "编辑API资源",
+        "createDesc": "在此创建新API资源。完成后点击保存。",
+        "editDesc": "在此更新API资源。完成后点击保存。",
+        "save": "保存更改",
+        "saving": "保存中...",
+        "delete": "删除",
+        "deleting": "删除中...",
+        "deleteTitle": "删除API资源",
+        "deleteDesc": "您确定要删除API资源 {{method}} {{path}} 吗？此操作将永久从系统中删除该API资源。此操作不可撤销。",
+        "warning": "警告！",
+        "warningDesc": "请谨慎操作，此操作不可回滚。"
+      },
+      "messages": {
+        "loadFailed": "加载API资源数据失败，请重试",
+        "updating": "更新中...",
+        "pathCopied": "API路径已复制到剪贴板",
+        "createSuccess": "API资源创建成功",
+        "createFailed": "创建API资源失败",
+        "updateSuccess": "API资源更新成功",
+        "updateFailed": "更新API资源失败",
+        "deleteSuccess": "API资源删除成功",
+        "deleteFailed": "删除API资源失败"
+      }
+    },
+    "loginLogs": {
+      "title": "登录日志",
+      "description": "查看和管理系统登录日志记录",
+      "columns": {
+        "username": "用户名",
+        "loginIp": "IP地址",
+        "status": "状态",
+        "browser": "浏览器",
+        "os": "操作系统",
+        "device": "设备",
+        "failureReason": "失败原因",
+        "loginTime": "登录时间",
+        "success": "成功",
+        "failed": "失败",
+        "unknown": "未知"
+      },
+      "table": {
+        "searchPlaceholder": "筛选用户名...",
+        "status": "状态",
+        "success": "成功",
+        "failed": "失败",
+        "noResults": "没有结果。"
+      },
+      "actions": {
+        "refresh": "刷新",
+        "clearAll": "清空全部"
+      },
+      "messages": {
+        "refreshSuccess": "数据已刷新",
+        "loadFailed": "加载登录日志失败，请重试",
+        "clearSuccess": "已清空所有登录日志",
+        "clearFailed": "清空登录日志失败"
+      },
+      "dialogs": {
+        "clearTitle": "确认清空所有日志",
+        "clearDesc": "此操作将永久删除所有登录日志记录，无法恢复。确定要继续吗？",
+        "confirmClear": "确认清空"
+      }
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "description": "管理您的账户设置和邮件首选项。",
+    "selectSection": "选择设置项",
+    "profile": {
+      "title": "个人资料"
+    },
+    "account": {
+      "title": "账户设置",
+      "description": "管理您的账户信息。",
+      "updateDescription": "更新您的账户设置。设置您喜欢的语言和时区。"
+    },
+    "appearance": {
+      "title": "外观设置",
+      "description": "自定义界面外观。",
+      "updateDescription": "自定义应用程序的外观。在日间和夜间主题之间自动切换。",
+      "font": "字体",
+      "fontDescription": "设置您在仪表板中要使用的字体。",
+      "theme": "主题",
+      "themeDescription": "选择仪表板的主题。",
+      "light": "亮色",
+      "dark": "暗色",
+      "updatePreferences": "更新首选项"
+    }
+  },
+  "dashboard": {
+    "title": "仪表板",
+    "welcome": "欢迎回来",
+    "download": "下载",
+    "overview": "概览",
+    "analytics": "分析",
+    "reports": "报告",
+    "recentSales": "最近销售",
+    "recentSalesDescription": "本月您完成了 265 笔销售。",
+    "stats": {
+      "totalRevenue": "总收入",
+      "revenueGrowth": "较上月增长 +20.1%",
+      "subscriptions": "订阅数",
+      "subscriptionsGrowth": "较上月增长 +180.1%",
+      "sales": "销售额",
+      "salesGrowth": "较上月增长 +19%",
+      "activeNow": "当前活跃",
+      "activeGrowth": "较上小时增长 +201"
+    }
+  },
+  "signOut": {
+    "title": "登出",
+    "description": "确定要登出吗？登出后需要重新登录才能访问您的账户",
+    "confirm": "登出"
+  },
+  "pagination": {
+    "total": "共 {{total}} 条",
+    "page": "第 {{current}} 页，共 {{pages}} 页",
+    "itemsPerPage": "每页 {{count}} 条",
+    "rowsPerPage": "每页行数",
+    "firstPage": "第一页",
+    "prevPage": "上一页",
+    "nextPage": "下一页",
+    "lastPage": "最后一页",
+    "goToPage": "前往第 {{page}} 页"
+  }
+}
