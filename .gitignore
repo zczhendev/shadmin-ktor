@@ -1,0 +1,54 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Backend
+app/backend/build/
+app/backend/src/main/resources/static/
+app/backend/data/
+app/backend/uploads/
+*.h2.db
+
+# Frontend
+app/frontend/node_modules/
+app/frontend/dist/
+app/frontend/.vite/
+*.local
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# Java
+*.class
+*.war
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OMC state
+.omc/
+
+# Misc
+*.orig

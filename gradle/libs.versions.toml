@@ -1,0 +1,70 @@
+[versions]
+# Kotlin
+kotlin = "2.3.20"
+jvm-toolchain = "25"
+
+# Exposed ORM
+exposed = "0.58.0"
+
+# Database Drivers
+h2 = "2.3.232"
+postgresql = "42.7.4"
+mysql = "8.0.33"
+
+# Connection Pool
+hikaricp = "6.2.1"
+
+# Password Hashing
+bcrypt = "0.10.2"
+
+# JWT
+java-jwt = "4.5.0"
+
+# Logging
+logback = "1.5.24"
+
+# Google AutoService
+autoservice = "1.1.1"
+
+[libraries]
+# ─── Exposed ORM ───
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-java-time = { module = "org.jetbrains.exposed:exposed-java-time", version.ref = "exposed" }
+
+# ─── Database Drivers ───
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+mysql = { module = "mysql:mysql-connector-java", version.ref = "mysql" }
+
+# ─── Connection Pool ───
+hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
+
+# ─── Password Hashing ───
+bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
+
+# ─── JWT ───
+java-jwt = { module = "com.auth0:java-jwt", version.ref = "java-jwt" }
+
+# ─── Logging ───
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+# ─── Google AutoService ───
+autoservice = { module = "com.google.auto.service:auto-service", version.ref = "autoservice" }
+autoservice-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoservice" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+
+[bundles]
+# Exposed ORM
+exposed = ["exposed-core", "exposed-dao", "exposed-jdbc", "exposed-java-time"]
+
+# Database drivers
+database-drivers = ["h2", "postgresql", "mysql"]
+
+# AutoService
+autoservice = ["autoservice", "autoservice-annotations"]
