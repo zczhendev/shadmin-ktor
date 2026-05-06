@@ -37,6 +37,7 @@ import com.shadmin.modules.system.dict.DictRepository
 import com.shadmin.modules.system.log.LoginLogRepository
 import com.shadmin.modules.system.menu.MenuRepository
 import com.shadmin.modules.system.permission.PermissionRepository
+import com.shadmin.modules.system.permission.PermissionService
 import com.shadmin.modules.system.role.RoleRepository
 import com.shadmin.modules.system.user.UserRepository
 import io.ktor.server.application.*
@@ -48,7 +49,7 @@ import io.ktor.server.routing.*
 import io.ktor.http.*
 
 /**
- * System management module — User, Role, Menu, Dict, LoginLog.
+ * System management module �� User, Role, Menu, Dict, LoginLog.
  * Discovered automatically via SPI.
  */
 @AutoService(ModulePlugin::class)
@@ -66,6 +67,11 @@ class SystemModule : ModulePlugin, RouteRegistrar {
         container.register(ApiResourceRepository())
         container.register(PermissionRepository())
         container.register(DepartmentRepository())
+        container.register(PermissionService(
+            container.resolve(UserRepository::class),
+            container.resolve(PermissionRepository::class),
+            container.resolve(RoleRepository::class)
+        ))
 
         container.registerRoutes(this)
     }
@@ -79,12 +85,14 @@ class SystemModule : ModulePlugin, RouteRegistrar {
         val apiResourceRepo = container.resolve(ApiResourceRepository::class)
         val permissionRepo = container.resolve(PermissionRepository::class)
         val deptRepo = container.resolve(DepartmentRepository::class)
+        val permissionService = container.resolve(PermissionService::class)
 
         fun hasPermission(principal: JWTPrincipal?, permissionCode: String): Boolean {
             if (principal == null) return false
             val isAdmin = principal.payload.getClaim("is_admin")?.asBoolean() ?: false
             if (isAdmin) return true
-            val permissions = principal.payload.getClaim("permissions")?.asList(String::class.java) ?: emptyList()
+            val userId = principal.subject ?: return false
+            val permissions = permissionService.getUserPermissions(userId)
             return permissions.any { it == permissionCode || matchWildcard(it, permissionCode) }
         }
 
@@ -117,7 +125,7 @@ class SystemModule : ModulePlugin, RouteRegistrar {
         route.authenticate("auth-jwt") {
             route("/api/v1/system") {
 
-                // ─── Users ───
+                // ������ Users ������
                 route("/user") {
                     get("") {
                         if (!requirePermission(call, "system:user:list")) return@get
@@ -137,45 +145,61 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                         call.respond(HttpStatusCode.OK, success(userRepo.create(req, PasswordHasher.hash(req.password))))
                     }
                     get("/{id}") {
+                        if (!requirePermission(call, "system:user:list")) return@get
                         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("ID required"))
+                        val currentUserId = call.principal<JWTPrincipal>()?.subject ?: ""
+                        if (!userRepo.canAccessUser(currentUserId, id)) {
+                            call.respond(HttpStatusCode.Forbidden, error("��Ȩ���ʸ��û�", code = 403))
+                            return@get
+                        }
                         call.respond(HttpStatusCode.OK, success(userRepo.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound, error("User not found", 404))))
                     }
                     put("/{id}") {
                         if (!requirePermission(call, "system:user:update")) return@put
                         val id = call.parameters["id"] ?: return@put call.respond(HttpStatusCode.BadRequest, error("ID required"))
+                        val currentUserId = call.principal<JWTPrincipal>()?.subject ?: ""
+                        if (!userRepo.canAccessUser(currentUserId, id)) {
+                            call.respond(HttpStatusCode.Forbidden, error("��Ȩ���¸��û�", code = 403))
+                            return@put
+                        }
                         val req = call.receive<UpdateUserRequest>()
                         validateUpdateUser(req)?.let { call.respond(HttpStatusCode.BadRequest, error(it)); return@put }
-                        call.respond(HttpStatusCode.OK, success(userRepo.update(id, req) ?: error("User not found", 404)))
+                        call.respond(HttpStatusCode.OK, success(userRepo.update(id, req) ?: return@put call.respond(HttpStatusCode.NotFound, error("User not found", 404))))
                     }
                     delete("/{id}") {
                         if (!requirePermission(call, "system:user:delete")) return@delete
                         val id = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest, error("ID required"))
                         val currentUserId = call.principal<JWTPrincipal>()?.subject ?: ""
-                        if (id == currentUserId) { call.respond(HttpStatusCode.BadRequest, error("不能删除自己")); return@delete }
+                        if (id == currentUserId) { call.respond(HttpStatusCode.BadRequest, error("����ɾ���Լ�")); return@delete }
                         val user = userRepo.findById(id) ?: return@delete call.respond(HttpStatusCode.NotFound, error("User not found", 404))
-                        if (user.is_admin) { call.respond(HttpStatusCode.Forbidden, error("不能删除管理员账户")); return@delete }
+                        if (user.is_admin) { call.respond(HttpStatusCode.Forbidden, error("����ɾ������Ա�˻�")); return@delete }
                         call.respond(HttpStatusCode.OK, success(userRepo.delete(id)))
                     }
                     get("/{id}/roles") {
+                        if (!requirePermission(call, "system:user:list")) return@get
                         call.respond(HttpStatusCode.OK, success(userRepo.getUserRoles(call.parameters["id"] ?: "")))
                     }
                 }
 
-                // ─── Roles ───
+                // ������ Roles ������
                 route("/role") {
-                    get("") { call.respond(HttpStatusCode.OK, success(roleRepo.findAll())) }
+                    get("") {
+                        if (!requirePermission(call, "system:role:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(roleRepo.findAll()))
+                    }
                     post("") {
                         if (!requirePermission(call, "system:role:create")) return@post
                         val req = call.receive<CreateRoleRequest>()
                         val parentId = req.parent_id
                         if (parentId != null && roleRepo.findById(parentId) == null) {
-                            call.respond(HttpStatusCode.BadRequest, error("父角色不存在"))
+                            call.respond(HttpStatusCode.BadRequest, error("����ɫ������"))
                             return@post
                         }
-                        if (roleRepo.findAll().any { it.name == req.name }) { call.respond(HttpStatusCode.Conflict, error("Role name already exists")); return@post }
+                        if (roleRepo.findAll().list.any { it.name == req.name }) { call.respond(HttpStatusCode.Conflict, error("Role name already exists")); return@post }
                         call.respond(HttpStatusCode.OK, success(roleRepo.create(req)))
                     }
                     get("/{id}") {
+                        if (!requirePermission(call, "system:role:list")) return@get
                         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("ID required"))
                         call.respond(HttpStatusCode.OK, success(roleRepo.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound, error("Role not found", 404))))
                     }
@@ -186,48 +210,59 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                         val parentId = req.parent_id
                         if (parentId != null) {
                             if (roleRepo.findById(parentId) == null) {
-                                call.respond(HttpStatusCode.BadRequest, error("父角色不存在"))
+                                call.respond(HttpStatusCode.BadRequest, error("����ɫ������"))
                                 return@put
                             }
                             if (roleRepo.hasCycle(id, parentId)) {
-                                call.respond(HttpStatusCode.BadRequest, error("不能设置循环继承"))
+                                call.respond(HttpStatusCode.BadRequest, error("��������ѭ���̳�"))
                                 return@put
                             }
                         }
-                        call.respond(HttpStatusCode.OK, success(roleRepo.update(id, req) ?: error("Role not found", 404)))
+                        call.respond(HttpStatusCode.OK, success(roleRepo.update(id, req) ?: return@put call.respond(HttpStatusCode.NotFound, error("Role not found", 404))))
                     }
                     delete("/{id}") {
                         if (!requirePermission(call, "system:role:delete")) return@delete
                         val role = roleRepo.findById(call.parameters["id"] ?: "") ?: return@delete call.respond(HttpStatusCode.NotFound, error("Role not found", 404))
-                        if (role.is_system) { call.respond(HttpStatusCode.Forbidden, error("不能删除系统管理员角色")); return@delete }
+                        if (role.is_system) { call.respond(HttpStatusCode.Forbidden, error("����ɾ��ϵͳ����Ա��ɫ")); return@delete }
                         val children = roleRepo.getChildRoles(role.id)
                         if (children.isNotEmpty()) {
-                            call.respond(HttpStatusCode.BadRequest, error("该角色有子角色，不能删除"))
+                            call.respond(HttpStatusCode.BadRequest, error("�ý�ɫ���ӽ�ɫ������ɾ��"))
                             return@delete
                         }
                         call.respond(HttpStatusCode.OK, success(roleRepo.delete(role.id)))
                     }
                     get("/{id}/menus") {
+                        if (!requirePermission(call, "system:role:list")) return@get
                         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("ID required"))
                         val role = roleRepo.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound, error("Role not found", 404))
                         call.respond(HttpStatusCode.OK, success(role.menus))
                     }
                     get("/{id}/permissions") {
+                        if (!requirePermission(call, "system:role:list")) return@get
                         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("ID required"))
                         val role = roleRepo.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound, error("Role not found", 404))
                         call.respond(HttpStatusCode.OK, success(role.permissions))
                     }
                 }
 
-                // ─── Permissions ───
+                // ������ Permissions ������
                 route("/permissions") {
-                    get("") { call.respond(HttpStatusCode.OK, success(permissionRepo.findAll())) }
+                    get("") {
+                        if (!requirePermission(call, "system:role:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(permissionRepo.findAll()))
+                    }
                 }
 
-                // ─── Menus ───
+                // ������ Menus ������
                 route("/menu") {
-                    get("") { call.respond(HttpStatusCode.OK, success(menuRepo.findAll())) }
-                    get("/tree") { call.respond(HttpStatusCode.OK, success(menuRepo.buildMenuTree())) }
+                    get("") {
+                        if (!requirePermission(call, "system:menu:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(menuRepo.findAll()))
+                    }
+                    get("/tree") {
+                        if (!requirePermission(call, "system:menu:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(menuRepo.buildMenuTree()))
+                    }
                     post("") {
                         if (!requirePermission(call, "system:menu:create")) return@post
                         call.respond(HttpStatusCode.OK, success(menuRepo.create(call.receive())))
@@ -242,9 +277,10 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                     }
                 }
 
-                // ─── API Resources ───
+                // ������ API Resources ������
                 route("/api-resources") {
                     get("") {
+                        if (!requirePermission(call, "system:api-resource:list")) return@get
                         val page = call.request.queryParameters["page"]?.toIntOrNull() ?: 1
                         val pageSize = call.request.queryParameters["page_size"]?.toIntOrNull() ?: 10
                         val method = call.request.queryParameters["method"]
@@ -268,9 +304,10 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                     }
                 }
 
-                // ─── Login Logs ───
+                // ������ Login Logs ������
                 route("/login-logs") {
                     get("") {
+                        if (!requirePermission(call, "system:login-log:list")) return@get
                         val page = call.request.queryParameters["page"]?.toIntOrNull() ?: 1
                         val pageSize = call.request.queryParameters["page_size"]?.toIntOrNull() ?: 10
                         call.respond(HttpStatusCode.OK, success(logRepo.findAll(page, pageSize)))
@@ -281,20 +318,26 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                     }
                 }
 
-                // ─── Departments ───
+                // ������ Departments ������
                 route("/dept") {
-                    get("") { call.respond(HttpStatusCode.OK, success(deptRepo.findAll())) }
-                    get("/tree") { call.respond(HttpStatusCode.OK, success(deptRepo.buildDeptTree())) }
+                    get("") {
+                        if (!requirePermission(call, "system:dept:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(deptRepo.findAll()))
+                    }
+                    get("/tree") {
+                        if (!requirePermission(call, "system:dept:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(deptRepo.buildDeptTree()))
+                    }
                     post("") {
                         if (!requirePermission(call, "system:dept:create")) return@post
                         val req = call.receive<CreateDepartmentRequest>()
-                        if (deptRepo.findByCode(req.code) != null) { call.respond(HttpStatusCode.OK, error("Department code already exists")); return@post }
+                        if (deptRepo.findByCode(req.code) != null) { call.respond(HttpStatusCode.Conflict, error("Department code already exists")); return@post }
                         call.respond(HttpStatusCode.OK, success(deptRepo.create(req)))
                     }
                     put("/{id}") {
                         if (!requirePermission(call, "system:dept:update")) return@put
                         val id = call.parameters["id"] ?: return@put call.respond(HttpStatusCode.BadRequest, error("ID required"))
-                        call.respond(HttpStatusCode.OK, success(deptRepo.update(id, call.receive()) ?: error("Department not found", 404)))
+                        call.respond(HttpStatusCode.OK, success(deptRepo.update(id, call.receive()) ?: return@put call.respond(HttpStatusCode.NotFound, error("Department not found", 404))))
                     }
                     delete("/{id}") {
                         if (!requirePermission(call, "system:dept:delete")) return@delete
@@ -302,6 +345,7 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                         call.respond(HttpStatusCode.OK, success(deptRepo.delete(id)))
                     }
                     get("/{id}/users") {
+                        if (!requirePermission(call, "system:dept:list")) return@get
                         val id = call.parameters["id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("ID required"))
                         call.respond(HttpStatusCode.OK, success(deptRepo.findUsersByDepartment(id)))
                     }
@@ -315,24 +359,31 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                     }
                 }
 
-                // ─── Dict ───
+                // ������ Dict ������
                 route("/dict") {
-                    get("/types") { call.respond(HttpStatusCode.OK, success(dictRepo.findAllTypes())) }
+                    get("/types") {
+                        if (!requirePermission(call, "system:dict:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(dictRepo.findAllTypes()))
+                    }
                     post("/types") {
                         if (!requirePermission(call, "system:dict:create")) return@post
                         call.respond(HttpStatusCode.OK, success(dictRepo.createType(call.receive())))
                     }
                     put("/types/{id}") {
                         if (!requirePermission(call, "system:dict:update")) return@put
-                        call.respond(HttpStatusCode.OK, success(dictRepo.updateType(call.parameters["id"]!!, call.receive()) ?: error("Dict type not found", 404)))
+                        call.respond(HttpStatusCode.OK, success(dictRepo.updateType(call.parameters["id"]!!, call.receive()) ?: return@put call.respond(HttpStatusCode.NotFound, error("Dict type not found", 404))))
                     }
                     delete("/types/{id}") {
                         if (!requirePermission(call, "system:dict:delete")) return@delete
                         call.respond(HttpStatusCode.OK, success(dictRepo.deleteType(call.parameters["id"]!!)))
                     }
-                    get("/types/code/{code}/items") { call.respond(HttpStatusCode.OK, success(dictRepo.findItemsByTypeCode(call.parameters["code"]!!))) }
+                    get("/types/code/{code}/items") {
+                        if (!requirePermission(call, "system:dict:list")) return@get
+                        call.respond(HttpStatusCode.OK, success(dictRepo.findItemsByTypeCode(call.parameters["code"]!!)))
+                    }
 
                     get("/items") {
+                        if (!requirePermission(call, "system:dict:list")) return@get
                         val typeId = call.request.queryParameters["type_id"] ?: return@get call.respond(HttpStatusCode.BadRequest, error("type_id required"))
                         call.respond(HttpStatusCode.OK, success(dictRepo.findItemsByTypeId(typeId)))
                     }
@@ -342,7 +393,7 @@ class SystemModule : ModulePlugin, RouteRegistrar {
                     }
                     put("/items/{id}") {
                         if (!requirePermission(call, "system:dict:update")) return@put
-                        call.respond(HttpStatusCode.OK, success(dictRepo.updateItem(call.parameters["id"]!!, call.receive()) ?: error("Dict item not found", 404)))
+                        call.respond(HttpStatusCode.OK, success(dictRepo.updateItem(call.parameters["id"]!!, call.receive()) ?: return@put call.respond(HttpStatusCode.NotFound, error("Dict item not found", 404))))
                     }
                     delete("/items/{id}") {
                         if (!requirePermission(call, "system:dict:delete")) return@delete
